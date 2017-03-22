@@ -1,0 +1,41 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="navigation_drawer_max_width">320dp</dimen>
+
+    <dimen name="nav_drawer_profile_image_size">84dp</dimen>
+    <dimen name="nav_drawer_account_section_default_height">164dp</dimen>
+    <dimen name="nav_drawer_vertical_keyline_icon_left">16dp</dimen>
+    <dimen name="nav_drawer_vertical_keyline_text_left">72dp</dimen>
+    <dimen name="nav_drawer_vertical_keyline_right">16dp</dimen>
+    <dimen name="nav_drawer_item_row_icon_size">24dp</dimen>
+    <dimen name="nav_drawer_vertical_spacing_listing">8dp</dimen>
+    <dimen name="nav_drawer_vertical_spacing_listing_divider_top">7dp</dimen>
+    <dimen name="nav_drawer_vertical_spacing_listing_divider_bottom">8dp</dimen>
+    <dimen name="nav_drawer_subheader_height">48dp</dimen>
+
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="movie_banner_width">120dp</dimen>
+    <dimen name="movie_banner_height">170dp</dimen>
+    <dimen name="banner_margin">10dp</dimen>
+    <dimen name="movie_title_width">120dp</dimen>
+    <dimen name="movie_title_height">20dp</dimen>
+    <dimen name="movie_banner_padding">10dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="item_offset">10dp</dimen>
+    <dimen name="detail_backdrop_height">250dp</dimen>
+    <dimen name="backdrop_title">30dp</dimen>
+    <dimen name="backdrop_subtitle">18dp</dimen>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_album_radius">0dp</dimen>
+    <dimen name="album_cover_height">360dp</dimen>
+    <dimen name="album_title_padding">10dp</dimen>
+    <dimen name="album_title">15dp</dimen>
+    <dimen name="songs_count_padding_bottom">5dp</dimen>
+    <dimen name="songs_count">12dp</dimen>
+    <dimen name="ic_album_overflow_width">20dp</dimen>
+    <dimen name="ic_album_overflow_height">30dp</dimen>
+    <dimen name="ic_album_overflow_margin_top">10dp</dimen>
+</resources>

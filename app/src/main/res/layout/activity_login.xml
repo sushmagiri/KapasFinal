@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_background"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="0dip">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/navigation_drawer_user_account_picture_profile"
+            android:layout_width="@dimen/nav_drawer_profile_image_size"
+            android:layout_height="@dimen/nav_drawer_profile_image_size"
+            android:src="@drawable/ic_account_circle_64dp" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Login"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/loginTextColor"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="0dip">
+
+        <EditText
+            android:id="@+id/email"
+            android:hint="Email/Username"
+            android:background="@drawable/round_shape"
+            android:layout_width="match_parent"
+            android:paddingLeft="15dp"
+            android:singleLine="true"
+            android:textSize="15sp"
+            android:textColor="@color/loginTextColor"
+            android:textColorHint="@color/loginTextColor"
+            android:layout_height="50dp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:background="@drawable/round_shape"
+            android:layout_width="match_parent"
+            android:hint="Password"
+            android:paddingLeft="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/loginTextColor"
+            android:textColorHint="@color/loginTextColor"
+            android:inputType="textPassword"
+            android:layout_height="50dp" />
+
+
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+           android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/btn_login"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="50dp">
+
+
+            <Button
+                android:id="@+id/btnLinkToRegisterScreen"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="@string/btn_link_to_register"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
