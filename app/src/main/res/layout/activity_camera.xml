@@ -21,10 +21,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:background="@color/btn_bg"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
+            android:background="@drawable/button_background"
+            android:padding="15dp"
             android:text="@string/btnTakePicture"
+            android:textSize="14dp"
             android:textColor="@color/white" />
 
         <TextView
@@ -41,10 +41,10 @@
             android:id="@+id/btnRecordVideo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/btn_bg"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
+            android:background="@drawable/button_background"
+            android:padding="15dp"
             android:text="@string/btnRecordVideo"
+            android:textSize="14dp"
             android:textColor="@color/white" />
     </LinearLayout>
 

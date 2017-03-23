@@ -24,36 +24,41 @@
         />
 
     <Button
-        android:id="@+id/btn_reg"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign UP"
-        android:textColor="@color/white"
-        android:background="@drawable/edittext"
-        android:layout_alignBaseline="@+id/btn_login"
-        android:layout_alignBottom="@+id/btn_login"
-        android:layout_alignRight="@+id/txt_message"
-        android:layout_alignEnd="@+id/txt_message"
-        android:layout_marginRight="12dp"
-        android:textStyle="bold"
-        android:layout_marginEnd="12dp" />
-
-    <Button
         android:id="@+id/btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="20dp"
-        android:text="Login  "
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:text="Login"
+        android:textSize="14dp"
         android:textColor="@color/white"
         android:background="@drawable/edittext"
         android:layout_marginEnd="26dp"
         android:textStyle="bold"
-
-        android:paddingLeft="5dp"
+        android:padding="10dp"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/btn_reg"
         android:layout_toStartOf="@+id/btn_reg" />
+
+    <Button
+        android:id="@+id/btn_reg"
+
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:text="Sign Up"
+        android:textSize="14dp"
+        android:textAlignment="center"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:background="@drawable/edittext"
+        android:layout_marginRight="13dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="13dp"
+        android:layout_alignBottom="@+id/btn_login"
+        android:layout_alignRight="@+id/txt_message"
+        android:layout_alignEnd="@+id/txt_message"/>
 
 </RelativeLayout>

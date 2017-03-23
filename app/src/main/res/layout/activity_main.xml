@@ -40,11 +40,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dip"
-            android:background="@color/btn_logut_bg"
+            android:padding="15dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:background="@drawable/button_background"
             android:text="@string/btn_logout"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textSize="16dp" />
     </LinearLayout>
 
 </RelativeLayout>

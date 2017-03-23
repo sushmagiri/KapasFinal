@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/register_background"
-    android:orientation="vertical">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/register_background"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -57,8 +65,9 @@
             android:layout_width="match_parent"
             android:paddingLeft="15dp"
             android:singleLine="true"
-            android:textSize="15sp"
-            android:textColor="@color/loginTextColor"
+            android:textSize="14sp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
             android:textColorHint="@color/loginTextColor"
             android:layout_height="50dp" />
 
@@ -68,8 +77,9 @@
             android:layout_width="match_parent"
             android:hint="Password"
             android:paddingLeft="15dp"
-            android:textSize="15sp"
-            android:textColor="@color/loginTextColor"
+            android:textSize="14sp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
             android:textColorHint="@color/loginTextColor"
             android:inputType="textPassword"
             android:layout_height="50dp" />
@@ -82,8 +92,8 @@
             android:layout_height="50dp"
            android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
-
-            android:background="@color/colorPrimaryDark"
+            android:padding="10dp"
+            android:background="@drawable/button_background"
             android:text="@string/btn_login"
             android:textColor="@color/white" />
 
@@ -116,4 +126,5 @@
 
     </LinearLayout>
 
-</ScrollView>
+    </ScrollView>
+    </RelativeLayout>

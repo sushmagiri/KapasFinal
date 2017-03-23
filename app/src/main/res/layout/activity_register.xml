@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/girls"
     android:gravity="center"
     android:orientation="vertical"
    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/girls"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -13,7 +17,10 @@
         android:layout_gravity="center"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp" >
+        android:paddingRight="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <EditText
             android:id="@+id/name"
@@ -22,10 +29,12 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/round_shape"
             android:hint="@string/hint_name"
+            android:textSize="14dp"
             android:padding="10dp"
             android:singleLine="true"
             android:inputType="textCapWords"
-            android:textColor="@color/loginTextColor"
+            android:textAlignment="center"
+            android:textColor="@color/white"
             android:textColorHint="@color/loginTextColor" />
 
         <EditText
@@ -35,10 +44,12 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/round_shape"
             android:hint="@string/hint_email"
+            android:textAlignment="center"
             android:inputType="textEmailAddress"
             android:padding="10dp"
+            android:textSize="14dp"
             android:singleLine="true"
-            android:textColor="@color/loginTextColor"
+            android:textColor="@color/white"
             android:textColorHint="@color/loginTextColor"/>
 
         <EditText
@@ -48,10 +59,12 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/round_shape"
             android:hint="@string/hint_password"
+            android:textAlignment="center"
             android:inputType="textPassword"
             android:padding="10dp"
+            android:textSize="14dp"
             android:singleLine="true"
-            android:textColor="@color/loginTextColor"
+            android:textColor="@color/white"
             android:textColorHint="@color/loginTextColor"/>
 
         <!-- Login Button -->
@@ -61,7 +74,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
-            android:background="@color/colorPrimaryDark"
+            android:padding="10dp"
+            android:textSize="14dp"
+            android:textAlignment="center"
+            android:background="@drawable/button_background"
             android:text="@string/btn_register"
             android:textColor="@color/white" />
 
@@ -79,4 +95,4 @@
             android:textSize="15dp" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
