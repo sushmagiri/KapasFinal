@@ -44,7 +44,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".DescriptionActivity" />
         <activity
-            android:name=".Aboutus"
+            android:name=".Kapas"
             android:label="@string/title_activity_aboutus"
             android:theme="@style/AppTheme"></activity>
     </application>

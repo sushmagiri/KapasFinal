@@ -87,7 +87,12 @@ public class LoginActivity extends AppCompatActivity {
 
         final String username = et_username.getText().toString().trim();
         final String password = et_pass.getText().toString().trim();
-        if (username.trim().length() > 0 && password.trim().length() > 0) {
+        if(username.length() == 0){
+            et_username.setError("Required");
+        } else if(password.length() == 0) {
+            et_pass.setError("Required");
+        }else{
+
             Map<String, String> params = new HashMap<>();
 
             params.put("username", username);
@@ -120,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
+                            ToastUtils.showToast(LoginActivity.this, "Not Logged In", false);
                             error.printStackTrace();
                         }
                     }
@@ -128,10 +134,6 @@ public class LoginActivity extends AppCompatActivity {
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(jsonObjectRequest);
-        } else {
-
-            // user didn't entered username or password
-
         }
     }
 

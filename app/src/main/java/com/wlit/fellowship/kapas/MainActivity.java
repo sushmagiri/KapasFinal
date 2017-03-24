@@ -10,7 +10,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -33,7 +32,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -42,17 +40,14 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.wlit.fellowship.kapas.helper.SQLiteHandler;
-import com.wlit.fellowship.kapas.helper.SessionManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -95,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Kapas");
         initCollapsingToolbar();
 
         initInstances();
@@ -184,7 +180,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 if (!session.isUserLoggedIn()) {
                                     logoutUser();
                                 }else {
+
+                                    System.out.println(username);
                                     Intent intent1 = new Intent(MainActivity.this, ProfileActivity.class);
+                                    intent1.putExtra("username",username);
                                     startActivity(intent1);
                                 }
                                 break;
@@ -399,6 +398,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void getData(){
         //Showing a progress dialog
         final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...",false,false);
+        loading.setCancelable(true);
 
         //Creating a json array request
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Config.DATA_URL,
@@ -564,7 +564,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Intent i = new Intent(MainActivity.this, Aboutus.class);
+                Intent i = new Intent(MainActivity.this, Kapas.class);
                 startActivity(i);
 
 

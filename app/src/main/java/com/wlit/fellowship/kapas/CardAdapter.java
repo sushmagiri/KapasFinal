@@ -72,7 +72,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         public void bind(final Details details, final OnItemClickListener listener) {
 
             imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
-            imageLoader.get(details.getImageUrl(), ImageLoader.getImageListener(imageView, R.mipmap.ic_launcher, android.R.drawable.ic_dialog_alert));
+            imageLoader.get(details.getImageUrl(), ImageLoader.getImageListener(imageView, R.drawable.placeholder_banner_small, R.drawable.placeholder_banner_small));
             imageView.setImageUrl(details.getImageUrl(), imageLoader);
             textViewName.setText(details.getName());
 

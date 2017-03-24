@@ -21,6 +21,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -67,13 +69,15 @@ public class RegisterActivity extends AppCompatActivity {
         final String username = et_name.getText().toString().trim();
         final String email = et_email.getText().toString().trim();
         final String password = et_password.getText().toString().trim();
-        if (et_name.getText().length() <= 0) {
-            Toast.makeText(RegisterActivity.this, "Enter name", Toast.LENGTH_SHORT).show();
-        } else if (et_email.getText().length() <= 0) {
-            Toast.makeText(RegisterActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
-        } else if (et_password.getText().length() <= 0) {
-            Toast.makeText(RegisterActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
-        } else {
+        if(username.length() == 0){
+            et_name.setError("Required");
+        } if(email.length() == 0){
+            et_email.setError("Required");}
+        else if(password.length() == 0){
+            et_password.setError("Required");
+        }else if(!validEmailAddress(email)) {
+            et_email.setError("Invalid Email");
+        }else{
 
 
             Map<String, String> params = new HashMap<>();
@@ -100,6 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             error.printStackTrace();
+                            ToastUtils.showToast(RegisterActivity.this, "Unable to RegisterActivity", false);
                         }
                     }
             );
@@ -109,5 +114,14 @@ public class RegisterActivity extends AppCompatActivity {
             requestQueue.add(jsonObjectRequest);
 
         }
+    }
+    public boolean validEmailAddress(String email)
+    {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
     }
     }
