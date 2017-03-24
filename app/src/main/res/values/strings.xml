@@ -13,8 +13,9 @@
     <string name="backdrop_title">KAPAS</string>
     <string name="backdrop_subtitle">“Buy less, choose well.”</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">About Us</string>
     <string name="btnTakePicture">Capture Image</string>
+    <string name="aboutus">KAPAS is a destination for fashion lovers and designers alike to capture and share unique designs. For your “I have nothing to wear” situations, Kapas helps you discover what you love, express your own style and stay up-to-date with the latest fashion trends. Your feed also serves you endless inspirations from fashionistas, brands, beauty and lifestyle. It\'s now easier to feed your styling addiction as life is too short to wear boring clothes.</string>
     <string name="btnRecordVideo">Record Video</string>
     <string name="or">(or)</string>
     <string name="btnUploadToServer">Upload to Server</string>
@@ -49,5 +50,6 @@
     <string name="save_edit">Save edit</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_aboutus">Aboutus</string>
 
 </resources>

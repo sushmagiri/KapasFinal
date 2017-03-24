@@ -2,31 +2,70 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context="com.example.user.wlitlogin.Profile"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dip">
-
-    <!-- Name Label -->
-    <TextView
-        android:id="@+id/lblName"
-        android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+   >
+    <LinearLayout
+        android:id="@+id/profile_header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:layout_marginTop="40dip"
-        android:layout_marginBottom="10dip"/>
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_account_circle_black_24dp"
+            android:id="@+id/circleView"/>
+        <TextView
+            android:id="@+id/txt_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="18dp"
+            android:textSize="16sp"
+            android:text="username"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <TextView
+            android:id="@+id/txt_profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="email" />
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dip"
+            android:padding="15dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:background="@drawable/button_background"
+            android:text="@string/btn_logout"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" /> />
+        </LinearLayout>
 
-    <!-- Email Label -->
-    <TextView
-        android:id="@+id/lblEmail"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:layout_marginBottom="40dip"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"/>
+        </LinearLayout>
 
-    <!-- Button to show session data -->
-    <Button android:id="@+id/btnLogout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout"/>
-</LinearLayout>
+
+
+
+
+
+

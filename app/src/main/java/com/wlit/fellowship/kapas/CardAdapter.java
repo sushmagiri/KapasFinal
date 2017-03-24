@@ -43,10 +43,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         Details details =  detailsList.get(position);
 
         imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
-        imageLoader.get(details.getImageUrl(), ImageLoader.getImageListener(holder.imageView, R.mipmap.ic_launcher, android.R.drawable.ic_dialog_alert));
+        imageLoader.get(details.getImageUrl(), ImageLoader.getImageListener(holder.imageView, android.R.drawable.ic_dialog_alert, android.R.drawable.ic_dialog_alert));
 
         holder.imageView.setImageUrl(details.getImageUrl(), imageLoader);
         holder.textViewName.setText(details.getName());
+        holder.setIsRecyclable(false);
     }
 
     @Override

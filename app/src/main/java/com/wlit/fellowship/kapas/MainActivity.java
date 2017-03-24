@@ -28,6 +28,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -54,6 +55,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -62,9 +64,11 @@ import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
 
 @RuntimePermissions
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, EasyPermissions.PermissionCallbacks {
     private List<Details> detailsList;
     //Creating Views
     private RecyclerView recyclerView;
@@ -74,7 +78,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Bitmap bitmap;
     private static final int REQUEST_TAKE_PHOTO = 2;
     private SQLiteHandler db;
-    private SessionManager session;
+    private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
+    private UserSession session;
+    String[] permissions = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     Button btnTakePhoto;
     ImageView ivPreview;
@@ -96,18 +102,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initInstances() {
 
-        db = new SQLiteHandler(getApplicationContext());
 
         // session manager
-        session = new SessionManager(getApplicationContext());
+        session = new UserSession(getApplicationContext());
+        HashMap<String, String> user = session.getUserDetails();
 
-        HashMap<String, String> user = db.getUserDetails();
-        username = user.get("name");
+        // name
+        username  = user.get(UserSession.KEY_NAME);
         System.out.println(username);
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setHasFixedSize(true);
         layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -142,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 break;
 
                             case R.id.action_camera:
-                                if (!session.isLoggedIn()) {
+                                if (!session.isUserLoggedIn()) {
                                     logoutUser();
                                 }else {
                                     String title;
@@ -151,7 +156,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                             .setCancelable(true)
                                             .setPositiveButton("Take Photo", new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {
-                                                    MainActivityPermissionsDispatcher.startCameraWithCheck(MainActivity.this);
+                                                    if (EasyPermissions.hasPermissions(MainActivity.this, permissions)) {
+                                                        MainActivityPermissionsDispatcher.startCameraWithCheck(MainActivity.this);
+
+                                                    } else {
+                                                        EasyPermissions.requestPermissions(MainActivity.this, "Allow application to access camera?", CAMERA_CAPTURE_IMAGE_REQUEST_CODE, permissions);
+                                                    }
                                                 }
                                             })
                                             .setNegativeButton("Pick a File", new DialogInterface.OnClickListener() {
@@ -170,10 +180,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                             case R.id.action_profile:
-                                if (!session.isLoggedIn()) {
+                                if (!session.isUserLoggedIn()) {
                                     logoutUser();
                                 }else {
-                                    Intent intent1 = new Intent(MainActivity.this, Activity_Main.class);
+                                    Intent intent1 = new Intent(MainActivity.this, ProfileActivity.class);
                                     startActivity(intent1);
                                 }
                                 break;
@@ -192,12 +202,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void logoutUser() {
-        session.setLogin(false);
+//        session.s(false);
 
-        db.deleteUsers();
+//        db.deleteUsers();
 
         // Launching the login activity
-        Intent intent = new Intent(MainActivity.this, Activity_Login.class);
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
@@ -439,6 +449,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Adding adapter to recyclerview
         recyclerView.setAdapter(adapter);
     }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms) {
+        MainActivityPermissionsDispatcher.startCameraWithCheck(MainActivity.this);
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, Arrays.asList(permissions))) {
+            new AppSettingsDialog.Builder(this, "Allow Permissions?")
+                    .setTitle("Open settings to allow permissions?")
+                    .setPositiveButton("Settings")
+                    .setNegativeButton("Cancel", null)
+                    .setRequestCode(CAMERA_CAPTURE_IMAGE_REQUEST_CODE)
+                    .build()
+                    .show();
+        }
+    }
+
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
         private int spanCount;
@@ -515,5 +544,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent i = new Intent(MainActivity.this, Aboutus.class);
+                startActivity(i);
+
+
+                break;
+
+        }
+        return true;
+    }
 }

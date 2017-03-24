@@ -26,8 +26,8 @@ public class Profile extends AppCompatActivity {
         // Session class instance
         session= new UserSession(getApplicationContext());
 
-        TextView lblName = (TextView) findViewById(R.id.lblName);
-        TextView lblEmail = (TextView) findViewById(R.id.lblEmail);
+//        TextView lblName = (TextView) findViewById(R.id.lblName);
+//        TextView lblEmail = (TextView) findViewById(R.id.lblEmail);
 
         // Button logout
         btnLogout = (Button) findViewById(R.id.btnLogout);

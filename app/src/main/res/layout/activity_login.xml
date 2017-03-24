@@ -59,7 +59,7 @@
         android:layout_height="0dip">
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/login_name"
             android:hint="Email/Username"
             android:background="@drawable/round_shape"
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
             android:layout_height="50dp" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/login_password"
             android:background="@drawable/round_shape"
             android:layout_width="match_parent"
             android:hint="Password"
@@ -87,7 +87,7 @@
 
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnLoginSc"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
            android:layout_marginBottom="20dp"

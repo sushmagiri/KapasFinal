@@ -137,7 +137,7 @@ public class HomePage extends AppCompatActivity {
 
 
                             case R.id.action_profile:
-                                Intent intent1=new Intent(HomePage.this,Camera.class);
+                                Intent intent1=new Intent(HomePage.this,LoginActivity.class);
                                 startActivity(intent1);
                                 break;
 

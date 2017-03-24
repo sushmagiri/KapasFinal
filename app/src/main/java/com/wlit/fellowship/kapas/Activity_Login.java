@@ -41,9 +41,9 @@ public class Activity_Login extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+//        inputEmail = (EditText) findViewById(R.id.email);
+//        inputPassword = (EditText) findViewById(R.id.password);
+//        btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
 
         // Progress dialog
