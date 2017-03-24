@@ -11,7 +11,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.wlit.fellowship.kapas.volley.CustomVolleyRequest;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by user on 3/5/2017.
@@ -20,12 +20,19 @@ import java.util.List;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     private ImageLoader imageLoader;
     private Context context;
+    ArrayList<Details> detailsList;
+    private final CardAdapter.OnItemClickListener listener;
 
-    //List of superHeroes
-    List<Details> detailsList;
+    public interface OnItemClickListener {
+        void onItemClick(Details details);
+    }
 
-    public CardAdapter(List<Details> detailsList, Context context ) {
-        this.imageLoader = imageLoader;
+
+
+
+
+    public CardAdapter(ArrayList<Details> detailsList, Context context, CardAdapter.OnItemClickListener listener) {
+        this.listener = listener;
         this.context = context;
         this.detailsList = detailsList;
     }
@@ -40,14 +47,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(CardAdapter.ViewHolder holder, int position) {
-        Details details =  detailsList.get(position);
+        holder.bind(detailsList.get(position),listener);
 
-        imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
-        imageLoader.get(details.getImageUrl(), ImageLoader.getImageListener(holder.imageView, android.R.drawable.ic_dialog_alert, android.R.drawable.ic_dialog_alert));
 
-        holder.imageView.setImageUrl(details.getImageUrl(), imageLoader);
-        holder.textViewName.setText(details.getName());
-        holder.setIsRecyclable(false);
+
     }
 
     @Override
@@ -59,11 +62,26 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         public TextView textViewName;
 
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
             imageView = (NetworkImageView) itemView.findViewById(R.id.imageViewHero);
             textViewName = (TextView) itemView.findViewById(R.id.textViewName);
 
+
         }
+        public void bind(final Details details, final OnItemClickListener listener) {
+
+            imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
+            imageLoader.get(details.getImageUrl(), ImageLoader.getImageListener(imageView, R.mipmap.ic_launcher, android.R.drawable.ic_dialog_alert));
+            imageView.setImageUrl(details.getImageUrl(), imageLoader);
+            textViewName.setText(details.getName());
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(details);
+                }
+            });
+        }
+
     }
 }

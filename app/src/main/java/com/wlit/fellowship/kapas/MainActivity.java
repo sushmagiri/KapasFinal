@@ -53,6 +53,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,7 +70,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 @RuntimePermissions
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, EasyPermissions.PermissionCallbacks {
-    private List<Details> detailsList;
+    private ArrayList<Details> detailsList;
     //Creating Views
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -444,7 +445,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         //Finally initializing our adapter
-        adapter = new CardAdapter(detailsList, this);
+        adapter = new CardAdapter(detailsList,this, new CardAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Details details) {
+                Intent intent = new Intent(MainActivity.this, DescriptionActivity.class);
+                intent.putExtra("data", ((Serializable)details));
+                startActivity(intent);
+
+
+            }
+        });
 
         //Adding adapter to recyclerview
         recyclerView.setAdapter(adapter);

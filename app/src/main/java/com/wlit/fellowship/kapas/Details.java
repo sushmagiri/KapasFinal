@@ -1,10 +1,12 @@
 package com.wlit.fellowship.kapas;
 
+import java.io.Serializable;
+
 /**
  * Created by user on 3/5/2017.
  */
 
-public class Details {
+public class Details implements Serializable {
     private String imageUrl;
     private String name;
 
@@ -25,4 +27,6 @@ public class Details {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

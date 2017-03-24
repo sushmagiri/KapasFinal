@@ -69,7 +69,7 @@ public class UserSession {
         if(!this.isUserLoggedIn()){
 
             // user is not logged in redirect him to Login Activity
-            Intent i = new Intent(_context, Activity_Main.class);
+            Intent i = new Intent(_context, MainActivity.class);
 
             // Closing all the Activities from stack
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -115,7 +115,7 @@ public class UserSession {
         editor.commit();
 
         // After logout redirect user to MainActivity
-        Intent i = new Intent(_context, Activity_Main.class);
+        Intent i = new Intent(_context, MainActivity.class);
 
         // Closing all the Activities
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -40,7 +40,7 @@ public class Messgae extends AppCompatActivity {
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                j= new Intent(Messgae.this,Activity_Register.class );
+                j= new Intent(Messgae.this,RegisterActivity.class );
                 startActivity(j
                 );
             }
